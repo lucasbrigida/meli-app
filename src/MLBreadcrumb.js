@@ -3,7 +3,8 @@ import './index.css';
 
 class MLBreadcrumb extends Component {
     render() {
-        let categories = this.props.categories.map((category, index) => 
+        let categories = this.props.categories || [];
+        categories.map((category, index) => 
             <li key={index} className="ml-breadcrumb-item">{category}</li>
         );
 

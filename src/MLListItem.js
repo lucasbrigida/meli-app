@@ -8,7 +8,7 @@ class MLListItem extends Component {
             <section className="ml-list-item">
                 <div className="ml-list-item-content">
                     <div className="ml-list-item-image">
-                        <img src={item.picture}/>
+                        <img src={item.picture} alt={item.title}/>
                     </div>
                     <div className="ml-list-item-info">
                         <div className="row">

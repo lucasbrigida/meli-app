@@ -32,7 +32,7 @@ class MLItemDetail extends Component {
                 <section className="ml-list-item-detail">
                     <div className="ml-list-item-detail-content">
                         <div className="ml-list-item-detail-image">
-                            <img src={item.picture}/>
+                            <img src={item.picture} alt={item.title}/>
                         </div>
                         <div className="ml-list-item-detail-info">
                             <div className="row">

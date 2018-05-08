@@ -8,11 +8,16 @@ import MLItemDetail from './MLItemDetail';
 import MLFooter from './MLFooter';
 
 
-class MLDetalhe extends Component {  
+class MLDetalhe extends Component {
   render() {
+    const {categories} = this.props;
+
     return (
       <div>
+        <MLHeader/>
+        <MLBreadcrumb categories={categories}/>
         <MLItemDetail itemId={this.props.itemId}/>
+        <MLFooter/>
       </div> 
     );
   }

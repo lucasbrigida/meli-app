@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './index.css';
+
+import MLHeader from './MLHeader';
+import MLBreadcrumb from './MLBreadcrumb';
+import MLList from './MLList';
+import MLFooter from './MLFooter';
 
 class MLResultados extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categories: [],
+      items: []
+    };
+  }
+
+  setItems({items, categories}) {
+    this.setState({items, categories});
+  }
+
   render() {
+    const {categories, items} = this.state;
+    const {query} = this.props;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <div>
+        <MLHeader query={query} search={this.setItems.bind(this)}/>
+        <MLBreadcrumb categories={categories}/>
+        <MLList items={items}/>
+        <MLFooter/>
+      </div>  
     );
   }
 }

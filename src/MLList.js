@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import './index.css';
 
@@ -6,12 +7,14 @@ import MLListItem from './MLListItem';
 
 class MLList extends Component {
     render() {
-        let listItems = (this.props.items).map((item, index) => 
-            <MLListItem key={index} item={item}/>
+        const listItems = this.props.items.map((item, index) => 
+            <Link key={index} to={`/items/${item.id}`}>
+                <MLListItem item={item}/>
+            </Link>
         );
 
         return (
-            <article className="ml-container ml-list">{ listItems }</article>
+            <article className="ml-container ml-list">{listItems}</article>
         ); 
     }
 }

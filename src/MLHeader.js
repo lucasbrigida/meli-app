@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './index.css';
 
 class MLHeader extends Component {
@@ -6,30 +7,43 @@ class MLHeader extends Component {
         super(props);
         
         this.state = {
-            query: ''
+            query: '',
+            searched: false
         };
+    }
+
+    getItems(query = '') {
+        query = query.replace(/[^\w\s]/gi, '');
+        axios.get(`http://localhost:3001/api/items?q=${query}`)
+        .then(res => {
+            if (!this.props.search) return;
+            this.props.search({
+                items: res.data.items,
+                categories: res.data.categories
+            });
+        });
     }
     
     handleChange(e) {
         this.setState({query: e.target.value});
     }
 
-
     handleClick(e) {
         e.preventDefault();
-        this.props.search(this.state.query);
+        this.getItems(this.state.query);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.search(this.state.query);
+        this.getItems(this.state.query);
     }
 
     render() {
         let search = this.props.query ? this.props.query : this.state.query; 
-        if (search){
-            console.log('sss');
-            this.props.search(search);
+        
+        if (this.props.query && !this.state.searched) {
+            this.setState({query: this.props.query,searched: this.state.query === this.props.query});
+            this.getItems(this.props.query);
         }
 
         return (
@@ -44,7 +58,7 @@ class MLHeader extends Component {
                                 onChange={this.handleChange.bind(this)} 
                                 placeholder="Nunca dejes de buscar"/>
 
-                            <a className="ml-btn-search" onClick={this.handleClick.bind(this)}></a>
+                            <a className="ml-btn-search" onClick={this.handleClick.bind(this)}> </a>
                         </div>
                     </form>
                 </div>    
