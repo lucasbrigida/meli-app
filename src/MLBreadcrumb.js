@@ -3,15 +3,13 @@ import './index.css';
 
 class MLBreadcrumb extends Component {
     render() {
+        let categories = this.props.categories.map((category, index) => 
+            <li key={index} className="ml-breadcrumb-item">{category}</li>
+        );
+
         return (
             <nav className="ml-container">
-                <ul className="ml-breadcrumb">
-                    <li className="ml-breadcrumb-item">Electrónica, Audio y Video</li>
-                    <li className="ml-breadcrumb-item">iPod</li>
-                    <li className="ml-breadcrumb-item">Reproductores</li>
-                    <li className="ml-breadcrumb-item">iPod touch</li>
-                    <li className="ml-breadcrumb-item">32 GB</li>
-                </ul>
+                <ul className="ml-breadcrumb">{categories}</ul>
             </nav>
         );
     }

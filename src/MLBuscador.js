@@ -12,10 +12,7 @@ class MLBuscador extends Component {
   render() {
     return (
       <div>
-        <MLHeader/>
-        <MLBreadcrumb/>
-        <MLList/>
-        <MLFooter/>
+        <MLList items={this.props.items}/>
       </div>  
     );
   }

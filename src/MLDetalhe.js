@@ -12,10 +12,7 @@ class MLDetalhe extends Component {
   render() {
     return (
       <div>
-        <MLHeader/>
-        <MLBreadcrumb/>
-        <MLItemDetail itemId={'MLA701142529'}/>
-        <MLFooter/>
+        <MLItemDetail itemId={this.props.itemId}/>
       </div> 
     );
   }
