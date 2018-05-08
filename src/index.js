@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
+
+import MLBuscador from './MLBuscador';
+import MLDetalhe from './MLDetalhe';
+
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<MLDetalhe />, document.getElementById('root'));
 registerServiceWorker();
